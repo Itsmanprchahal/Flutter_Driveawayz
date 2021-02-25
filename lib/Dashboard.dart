@@ -1,5 +1,6 @@
 import 'package:driveaways/SignUp1.dart';
 import 'package:driveaways/drawerItems/Home.dart';
+import 'package:driveaways/drawerItems/MyDrives.dart';
 import 'package:driveaways/routes/pageRoutes.dart';
 import 'package:flutter/material.dart';
 
@@ -195,6 +196,22 @@ class _DashboardState extends State<MyHomePage> {
                 ListTile(
                     title: Row(
                       children: <Widget>[
+                        Icon(Icons.home),
+                        Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Text('My Drives'),
+                        )
+                      ],
+                    ),
+                    onTap: () {
+                      setState(() {
+                        pageNo = 2;
+                      });
+                      Navigator.pop(context);
+                    }),
+                ListTile(
+                    title: Row(
+                      children: <Widget>[
                         Icon(Icons.notifications),
                         Padding(
                           padding: EdgeInsets.only(left: 8.0),
@@ -205,7 +222,7 @@ class _DashboardState extends State<MyHomePage> {
                     focusColor: Color.fromRGBO(50, 70, 21, 1),
                     onTap: () {
                       setState(() {
-                        pageNo = 2;
+                        pageNo = 3;
                       });
                       Navigator.pop(context);
                     }),
@@ -298,7 +315,11 @@ class _DashboardState extends State<MyHomePage> {
         break;
 
       case 2:
+        return MyDrives();
+
+      case 3:
         return Notifications();
+
       default:
     }
   }

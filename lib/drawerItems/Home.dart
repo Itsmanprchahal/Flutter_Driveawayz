@@ -430,10 +430,7 @@ class _HomeState extends State<MyHomePage> {
                                     color: Colors.black,
                                     textColor: Colors.white,
                                     onPressed: () {
-                                      // Navigator.push(context,
-                                      //     MaterialPageRoute(builder: (context) {
-                                      //   return Dashboard();
-                                      // }));
+                                      showDialog();
                                     },
                                   ),
                                 ),
@@ -448,13 +445,169 @@ class _HomeState extends State<MyHomePage> {
         ],
       ),
     );
-    //     GoogleMap(
-    //   onMapCreated: _onMapCreated,
-    //   initialCameraPosition: CameraPosition(
-    //     target: _center,
-    //     zoom: 11.0,
-    //   ),
-    // ));
+  }
+
+  void showDialog() {
+    showGeneralDialog(
+      barrierLabel: "Barrier",
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionDuration: Duration(milliseconds: 700),
+      context: context,
+      pageBuilder: (_, __, ___) {
+        return Align(
+          alignment: Alignment.center,
+          child: Container(
+            height: 200,
+            child: SizedBox.expand(
+                child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          text:
+                              "Thank you for driving with us, we apperciate your bussiness. The hourly rate for our driver at starting destination is \$40.00 per hour. By Clicking accept you allow DriverVille to preauthorize your credit card for \$250.00. You will be only be charged at the closing of drive the actual time used.",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal)),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(color: Colors.white)),
+                            onPressed: () {
+                              Navigator.pop(_);
+                            },
+                            color: Colors.white,
+                            textColor: Colors.black,
+                            child:
+                                Text("Cancel", style: TextStyle(fontSize: 15)),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(color: Colors.white)),
+                            onPressed: () {
+                              Navigator.pop(_);
+                              showDialog1();
+                            },
+                            color: Colors.white,
+                            textColor: Colors.black,
+                            child:
+                                Text("Accept", style: TextStyle(fontSize: 15)),
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )),
+            margin: EdgeInsets.only(bottom: 50, left: 12, right: 12),
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+        );
+      },
+      transitionBuilder: (_, anim, __, child) {
+        return SlideTransition(
+          position: Tween(begin: Offset(0, 2), end: Offset(0, 0)).animate(anim),
+          child: child,
+        );
+      },
+    );
+  }
+
+  void showDialog1() {
+    showGeneralDialog(
+      barrierLabel: "Barrier",
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionDuration: Duration(milliseconds: 700),
+      context: context,
+      pageBuilder: (_, __, ___) {
+        return Align(
+          alignment: Alignment.center,
+          child: Container(
+            height: 200,
+            child: SizedBox.expand(
+                child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          text:
+                              "Thank you for booking you drive. We look farward to serving you and “Delivering Memorable Experiences.”",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal)),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5)),
+                                side: BorderSide(color: Colors.white)),
+                            onPressed: () {
+                              Navigator.pop(_);
+                            },
+                            color: Colors.white,
+                            textColor: Colors.black,
+                            child:
+                                Text("Cancel", style: TextStyle(fontSize: 15)),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )),
+            margin: EdgeInsets.only(bottom: 50, left: 12, right: 12),
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+        );
+      },
+      transitionBuilder: (_, anim, __, child) {
+        return SlideTransition(
+          position: Tween(begin: Offset(0, 2), end: Offset(0, 0)).animate(anim),
+          child: child,
+        );
+      },
+    );
   }
 
   _pickTime() async {
