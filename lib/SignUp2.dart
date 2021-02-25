@@ -191,10 +191,10 @@ class _SignUp2 extends State<MyHomePage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.name,
                                       decoration: InputDecoration(
-                                          labelStyle: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.black),
-                                          hintText: ' CVV'),
+                                        labelStyle: TextStyle(
+                                            fontSize: 20, color: Colors.black),
+                                        hintText: ' CVV',
+                                      ),
                                     ),
                                   )
                                 ],
